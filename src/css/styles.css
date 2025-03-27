@@ -15,6 +15,16 @@
     --accent-hover: #1e40af;
 }
 
+/* Dark Theme */
+.--dark-theme {
+    --bg-primary: #e0e0e0;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #ffffff;
+    --text-primary: #121212;
+    --text-secondary: #555;
+    --accent-color: #1e40af;
+    --accent-hover: #2563eb;
+}
 
 /* Body and Layout */
 body {
@@ -24,7 +34,7 @@ body {
     flex-direction: column;
     height: 100vh;
     margin: 0 auto;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Contenedor principal */
@@ -37,6 +47,7 @@ body {
     padding-bottom: 16px;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-color) var(--bg-secondary);
+    padding-bottom: 80px;
 }
 
 /* Message Container */
@@ -48,6 +59,7 @@ body {
     gap: 12px;
     padding-bottom: 16px;
     scrollbar-width: thin;
+    background-color: var(--bg-secondary);
 }
 
 /* Columna de mensajes */
@@ -72,26 +84,32 @@ body {
     clear: both;
     align-self: flex-start;
     background-color: var(--bg-tertiary);
-    color: var(--text-primary);}
+    color: var(--text-primary);
+}
 
 /* Área de mensajes */
 .chat_container {
     flex-grow: 1;
     min-height: 200px;
     overflow-y: auto;
-    border: 1px solid #ddd;
+    border: 1px solid var(--text-secondary);
     border-radius: 5px;
     padding: 10px;
 }
 
+/* Input Wrapper */
 .input-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: table;
     table-layout: fixed;
-    width: 100%;
     border-spacing: 10px;
     padding: 15px;
     background: var(--bg-secondary);
     align-items: center;
+    z-index: 10; 
 }
 
 /* Theme Toggle - Left-aligned */
@@ -103,7 +121,7 @@ body {
     cursor: pointer;
     text-align: left;
     vertical-align: middle;
-    color: #e0e0e0;
+    color: var(--text-primary);
 }
 
 /* Text Field - Centered */
@@ -111,18 +129,20 @@ body {
     display: table-cell;
     width: 60%;
     padding: 10px;
-    border: 1px solid #000000;
+    border: 1px solid var(--text-secondary);
     border-radius: 60px;
     resize: none;
     vertical-align: middle;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
 }
 
 /* Send Button - Circular */
 .send {
     display: table-cell;
     margin-left: 3vh;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--text-primary);
     border-radius: 25px;
     padding: 10px 15px;
     cursor: pointer;
@@ -135,12 +155,13 @@ body {
     width: 24px;
     height: 24px;
 }
+
 /* Contador de caracteres */
 .counter-wrapper {
     text-align: right;
     padding: 5px 15px;
     font-size: 14px;
-    color: gray;
+    color: var(--text-secondary);
 }
 
 .input-group {
@@ -149,7 +170,22 @@ body {
     gap: 10px;
 }
 
+.url_preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 
+.preview_image {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
 
 .theme-toggle svg {
     width: 24px;
@@ -168,6 +204,4 @@ body {
     .input-wrapper {
         grid-template-columns: 1fr; /* Input y botón en línea vertical */
     }
-
-
 }

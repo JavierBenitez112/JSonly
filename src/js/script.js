@@ -96,7 +96,7 @@ themeToggleButton.innerHTML = `
 
     // Add event listener for theme toggle
     themeToggleButton.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
+        addThemeToggle()
     });
 
     // Optional: Add responsive meta tag if not already present
@@ -149,17 +149,29 @@ function detectURL(message) {
     return message.match(urlRegex);
 }
 
-// Function to create a preview element for a URL
+// Function to create a preview element for a URL with an image
 function createURLPreview(url) {
     const previewContainer = document.createElement('div');
     previewContainer.className = 'url_preview';
 
+    // Create an image element
+    const image = document.createElement('img');
+    image.src = url; // Use the URL as the image source
+    image.alt = 'Preview Image';
+    image.className = 'preview_image';
+
+    // Append the image to the preview container
+    previewContainer.appendChild(image);
+
+    // Create a link element
     const link = document.createElement('a');
     link.href = url;
     link.textContent = url;
     link.target = '_blank';
 
+    // Append the link to the preview container
     previewContainer.appendChild(link);
+
     return previewContainer;
 }
 
@@ -244,12 +256,6 @@ async function postData(data) {
 
 // Function to add theme toggle button and functionality
 function addThemeToggle() {
-    const themeToggleButton = document.createElement('button');
-    themeToggleButton.textContent = 'Toggle Dark Theme';
-    themeToggleButton.className = 'theme-toggle';
-    document.body.appendChild(themeToggleButton);
-
-    themeToggleButton.addEventListener('click', function() {
-        document.body.classList.toggle('--dark-theme');
-    });
+    var element = document.body;
+    element.classList.toggle("--dark-theme");
 }
